@@ -6,3 +6,30 @@ jobs:
     nuget_pack_push:
         name: nuget pack and push to Github Package Registry - call from ${{ github.actor }} for branch ${{ github.ref_name }}
         runs-on: ubuntu-latest
+        steps:
+            - 
+                name: Checkout ${{ github.repository }} - ${{ github.ref_name }}
+                uses: actions/checkout@v3
+            - 
+                name: Setup .NET
+                uses: actions/setup-dotnet@v3
+                with:
+                    dotnet-version: '6.0.x'
+                    source-url: https://nuget.pkg.github.com/toolsgroup/index.json
+                env:
+                    NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - 
+                name: Build projects
+                run: |
+                    dotnet build ./LightGBMNet.Train
+                    dotnet build ./LightGBMNet.Tree
+            - 
+                name: Create the packages
+                run: |
+                    dotnet pack --configuration Release ./LightGBMNet.Train
+                    dotnet pack --configuration Release ./LightGBMNet.Tree
+            # - 
+            #     name: Publish the packages to GPR
+            #     run: |
+            #         dotnet nuget push ./LightGBMNet.Train/bin/Release/*.nupkg
+            #         dotnet nuget push ./LightGBMNet.Tree/bin/Release/*.nupkg
