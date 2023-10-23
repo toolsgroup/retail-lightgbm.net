@@ -6,13 +6,13 @@
     <Platforms>x64</Platforms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>LightGBMNet.Train</PackageId>
+    <PackageId>retail-lightgbm.net.train</PackageId>
     <Authors>rca22, mjmckp</Authors>
     <Company />
     <Product>LightGBMNet.Train</Product>
     <Description>.NET wrapper for LightGBM training (includes native dlls compiled for CPU training only)</Description>
     <PackageProjectUrl></PackageProjectUrl>
-    <RepositoryUrl>https://github.com/rca22/LightGBM.Net</RepositoryUrl>
+    <RepositoryUrl>https://github.com/toolsgroup/retail-lightgbm.net</RepositoryUrl>
     <PackageTags>LightGBM</PackageTags>
     <Version>1.0.19</Version>
     <AssemblyVersion>1.0.19.0</AssemblyVersion>

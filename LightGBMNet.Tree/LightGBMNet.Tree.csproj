@@ -3,10 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>retail-lightgbm.net.tree</PackageId>
     <Authors>rca22, mjmckp</Authors>
     <Company>rca22, mjmckp</Company>
     <Description>Pure .NET implementation of LightGBM trees</Description>
-    <RepositoryUrl>https://github.com/rca22/LightGBM.Net</RepositoryUrl>
+    <RepositoryUrl>https://github.com/toolsgroup/retail-lightgbm.net</RepositoryUrl>
     <PackageTags>LightGBM</PackageTags>
     <Version>1.0.19</Version>
     <PlatformTarget>AnyCPU</PlatformTarget>
