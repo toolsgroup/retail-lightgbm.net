@@ -21,8 +21,8 @@ jobs:
             - 
                 name: Build projects
                 run: |
-                    dotnet build ./LightGBMNet.Train
-                    dotnet build ./LightGBMNet.Tree
+                    dotnet build --configuration Release ./LightGBMNet.Train
+                    dotnet build --configuration Release ./LightGBMNet.Tree
             - 
                 name: Create the packages
                 run: |
