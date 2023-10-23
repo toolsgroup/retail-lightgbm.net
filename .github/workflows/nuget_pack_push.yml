@@ -1,0 +1,8 @@
+name: nuget_pack_push
+run-name: ${{ github.actor }} is running ${{ github.workflow }} for branch ${{ github.ref_name }}
+on:
+    workflow_dispatch:
+jobs:
+    nuget_pack_push:
+        name: nuget pack and push to Github Package Registry - call from ${{ github.actor }} for branch ${{ github.ref_name }}
+        runs-on: ubuntu-latest
