@@ -315,8 +315,29 @@ namespace LightGBMNet.Train
         private static double[] Str2DoubleArray(string str, char [] delimiters)
         {
             return str.Split(delimiters, StringSplitOptions.RemoveEmptyEntries)
-                      .Select(s => double.TryParse(s.Replace("inf", "∞"), out double rslt) ? rslt : 
-                                    (s.Contains("nan") ? double.NaN : throw new Exception($"Cannot parse as double: {s}")))
+                      .Select(s =>
+                      {
+                          double value;
+
+                          if (double.TryParse(s, out double result))
+                          {
+                              value = result;
+                          }
+                          else if (s.Contains("inf")) // Linux returns inf. instead of inf
+                          {
+                              value = double.PositiveInfinity;
+                          }
+                          else if (s.Contains("nan"))
+                          {
+                              value = double.NaN;
+                          }
+                          else
+                          {
+                              throw new Exception($"Cannot parse as double: {s}");
+                          }
+
+                          return value;
+                      })
                       .ToArray();
         }
 
