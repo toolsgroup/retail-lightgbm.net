@@ -1,5 +1,10 @@
-# BUILD
-# docker build --pull --progress=plain --platform linux/amd64 -t microsoft/LightGBM -f $PWD/LightGBMNet.Train/Docker/Dockerfile.LightGBM.Build.Linux $PWD
+# BUILD Container
+# docker build --pull --progress=plain --platform linux/amd64 -t microsoft/lightgbm -f $PWD/LightGBMNet.Train/Docker/Dockerfile.LightGBM.Build.Linux $PWD
+# Build libary and copy files to host
+# docker run -d --rm --name dummy_container microsoft/lightgbm tail -f /dev/null
+# docker cp dummy_container:/usr/local/lib/lib_lightgbm.so $PWD/LightGBMNet.Train/native/Release/lib_lightgbm.so
+# docker cp dummy_container:/usr/local/bin/lightgbm $PWD/LightGBMNet.Train/native/Release/lightgbm
+# docker stop dummy_container
 
 FROM ubuntu:latest
 
@@ -15,9 +20,9 @@ RUN apt-get update && \
 # Get LightGBM source code (and get sub modules [recursive])
 RUN git clone --recursive https://github.com/microsoft/LightGBM.git
 
-# Build LightGBM (https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html)
+# Build LightGBM (https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html) [Taget v3.3.5]
 RUN cd LightGBM && \
-    git checkout v3.3.5 && \
+    git checkout v3.3.5 && \ 
     mkdir build && \
     cd build && \
     cmake .. && \
