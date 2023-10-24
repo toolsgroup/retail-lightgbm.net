@@ -26,7 +26,6 @@ jobs:
                 run: |
                     ls -all
                     ls -all ./LightGBMNet.Train
-                    ls -all ./LightGBMNet.Train/native
                     ls -all ./native/Release
                     docker run -d --rm --name dummy_container microsoft/lightgbm tail -f /dev/null
                     docker exec dummy_container ls -all /usr/local/lib
