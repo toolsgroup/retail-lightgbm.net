@@ -20,23 +20,11 @@ jobs:
                     context: .
                     file: ./LightGBMNet.Train/Docker/Dockerfile.LightGBM.Build.Linux
                     tags: microsoft/lightgbm:latest
-                    outputs: type=docker,dest=/tmp/microsoft-lightgbm.tar
-            - 
-                name: Upload artifact - docker-microsoft-lightgbm
-                uses: actions/upload-artifact@v3
-                with:
-                    name: docker-microsoft-lightgbm
-                    path: /tmp/microsoft-lightgbm.tar
-            - 
-                name: Download artifact - docker-microsoft-lightgbm
-                uses: actions/download-artifact@v3
-                with:
-                    name: docker-microsoft-lightgbm
-                    path: /tmp
+                    load: true
             - 
                 name: Copy Linux Build Files
                 run: |
-                    docker load --input /tmp/myimage.tar
+                    docker image inspect microsoft/lightgbm
                     docker run -d --rm --name dummy_container microsoft/lightgbm tail -f /dev/null
                     docker cp dummy_container:/usr/local/lib/lib_lightgbm.so ./LightGBMNet.Train/native/Release/lib_lightgbm.so
                     docker cp dummy_container:/usr/local/bin/lightgbm ./LightGBMNet.Train/native/Release/lightgbm

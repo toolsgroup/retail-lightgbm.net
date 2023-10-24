@@ -8,23 +8,23 @@
 
 FROM ubuntu:latest
 
-# Install dependencies required to build LightGBM 
-RUN apt-get update && \
-    apt-get install -y git && \
-    apt-get install -y cmake && \
-    apt-get install -y build-essential && \
-    apt-get install -y gcc && \
-    apt-get install -y g++ && \
-    apt-get install -y libomp-dev
+# # Install dependencies required to build LightGBM 
+# RUN apt-get update && \
+#     apt-get install -y git && \
+#     apt-get install -y cmake && \
+#     apt-get install -y build-essential && \
+#     apt-get install -y gcc && \
+#     apt-get install -y g++ && \
+#     apt-get install -y libomp-dev
 
-# Get LightGBM source code (and get sub modules [recursive])
-RUN git clone --recursive https://github.com/microsoft/LightGBM.git
+# # Get LightGBM source code (and get sub modules [recursive])
+# RUN git clone --recursive https://github.com/microsoft/LightGBM.git
 
-# Build LightGBM (https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html) [Taget v3.3.5]
-RUN cd LightGBM && \
-    git checkout v3.3.5 && \ 
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make -j4 && \
-    make install
+# # Build LightGBM (https://lightgbm.readthedocs.io/en/latest/Installation-Guide.html) [Taget v3.3.5]
+# RUN cd LightGBM && \
+#     git checkout v3.3.5 && \ 
+#     mkdir build && \
+#     cd build && \
+#     cmake .. && \
+#     make -j4 && \
+#     make install
