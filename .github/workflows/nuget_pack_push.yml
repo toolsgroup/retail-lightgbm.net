@@ -39,15 +39,15 @@ jobs:
             - 
                 name: Build projects
                 run: |
-                    dotnet build --configuration Release /p:Platform=x64 ./LightGBMNet.Train
                     dotnet build --configuration Release ./LightGBMNet.Tree
+                    dotnet build --configuration Release /p:Platform=x64 ./LightGBMNet.Train
             - 
                 name: Create the packages
                 run: |
-                    dotnet pack --configuration Release /p:Platform=x64 ./LightGBMNet.Train
                     dotnet pack --configuration Release ./LightGBMNet.Tree
+                    dotnet pack --configuration Release /p:Platform=x64 ./LightGBMNet.Train
             - 
                 name: Publish the packages to GPR
                 run: |
-                    dotnet nuget push ./LightGBMNet.Train/bin/Release/*.nupkg
                     dotnet nuget push ./LightGBMNet.Tree/bin/Release/*.nupkg
+                    dotnet nuget push ./LightGBMNet.Train/bin/x64/Release/*.nupkg
