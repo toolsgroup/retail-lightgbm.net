@@ -323,6 +323,10 @@ namespace LightGBMNet.Train
                           {
                               value = result;
                           }
+                          else if (s.Contains("-inf")) // Linux returns inf. instead of inf
+                          {
+                              value = double.NegativeInfinity;
+                          }
                           else if (s.Contains("inf")) // Linux returns inf. instead of inf
                           {
                               value = double.PositiveInfinity;
