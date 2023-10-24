@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -28,6 +28,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\native\Release\lightgbm.exe" LinkBase="x64" Pack="true" PackagePath="build\x64">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Condition="Exists('..\native\Release\lib_lightgbm.so')" Include="..\native\Release\lib_lightgbm.so" LinkBase="x64" Pack="true" PackagePath="build\x64">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Condition="Exists('..\native\Release\lightgbm')" Include="..\native\Release\lightgbm" LinkBase="x64" Pack="true" PackagePath="build\x64">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
