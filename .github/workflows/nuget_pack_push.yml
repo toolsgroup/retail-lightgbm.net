@@ -50,4 +50,7 @@ jobs:
                 name: Publish the packages to GPR
                 run: |
                     # dotnet nuget push ./LightGBMNet.Tree/bin/Release/*.nupkg
+                    ls -la ./LightGBMNet.Train/bin
+                    ls -la ./LightGBMNet.Train/bin/x64
+                    ls -la ./LightGBMNet.Train/bin/x64/Release/
                     dotnet nuget push ./LightGBMNet.Train/bin/x64/Release/*.nupkg
