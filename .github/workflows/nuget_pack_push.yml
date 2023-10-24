@@ -10,24 +10,24 @@ jobs:
             - 
                 name: Checkout ${{ github.repository }} - ${{ github.ref_name }}
                 uses: actions/checkout@v4
-            # -
-            #     name: Set up Docker Buildx
-            #     uses: docker/setup-buildx-action@v3
-            # - 
-            #     name: Build and export
-            #     uses: docker/build-push-action@v5
-            #     with:
-            #         context: .
-            #         file: ./LightGBMNet.Train/Docker/Dockerfile.LightGBM.Build.Linux
-            #         tags: microsoft/lightgbm:latest
-            #         load: true
-            # - 
-            #     name: Copy Linux Build Files
-            #     run: |
-            #         docker run -d --rm --name dummy_container microsoft/lightgbm tail -f /dev/null
-            #         docker cp dummy_container:/usr/local/lib/lib_lightgbm.so ./native/Release/lib_lightgbm.so
-            #         docker cp dummy_container:/usr/local/bin/lightgbm ./native/Release/lightgbm
-            #         docker stop dummy_container
+            -
+                name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v3
+            - 
+                name: Build and export
+                uses: docker/build-push-action@v5
+                with:
+                    context: .
+                    file: ./LightGBMNet.Train/Docker/Dockerfile.LightGBM.Build.Linux
+                    tags: microsoft/lightgbm:latest
+                    load: true
+            - 
+                name: Copy Linux Build Files
+                run: |
+                    docker run -d --rm --name dummy_container microsoft/lightgbm tail -f /dev/null
+                    docker cp dummy_container:/usr/local/lib/lib_lightgbm.so ./native/Release/lib_lightgbm.so
+                    docker cp dummy_container:/usr/local/bin/lightgbm ./native/Release/lightgbm
+                    docker stop dummy_container
             - 
                 name: Setup .NET
                 uses: actions/setup-dotnet@v3
