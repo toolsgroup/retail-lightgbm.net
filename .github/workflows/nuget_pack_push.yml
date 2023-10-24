@@ -26,7 +26,7 @@ jobs:
                 run: |
                     docker run -d --rm --name dummy_container microsoft/lightgbm tail -f /dev/null
                     docker cp dummy_container:/usr/local/lib/lib_lightgbm.so ./native/Release/lib_lightgbm.so
-                    docker cp dummy_container:/usr/local/bin/lightgbm ./native/Release/lightgbm
+                    # docker cp dummy_container:/usr/local/bin/lightgbm ./native/Release/lightgbm
                     docker stop dummy_container
             - 
                 name: Setup .NET
@@ -50,4 +50,5 @@ jobs:
                 name: Publish the packages to GPR
                 run: |
                     dotnet nuget push ./LightGBMNet.Tree/bin/Release/*.nupkg --skip-duplicate
+                    ls -la ./LightGBMNet.Train/bin/x64/Release/
                     dotnet nuget push ./LightGBMNet.Train/bin/x64/Release/*.nupkg --skip-duplicate
