@@ -52,5 +52,6 @@ jobs:
                 run: |
                     dotnet nuget push ./LightGBMNet.Tree/bin/Release/*.nupkg --skip-duplicate
                     # dotnet nuget push ./LightGBMNet.Train/bin/x64/Release/*.nupkg --skip-duplicate
+                    # https://g3rv4.com/2020/07/github-packages-nuget-broken-pipe
                     filename=$(find ./LightGBMNet.Train/bin/x64/Release -name "*.nupkg" -print -quit)
                     curl -vX PUT -u "$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}" -F package=@$filename https://nuget.pkg.github.com/toolsgroup/

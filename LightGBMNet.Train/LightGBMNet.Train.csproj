@@ -60,7 +60,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="LightGBMNet.Train.targets" Pack="true" PackagePath="build">
+    <!--<None Include="LightGBMNet.Train.targets" Pack="true" PackagePath="build">-->
+    <None Include="retail-lightgbm.net.train.targets" Pack="true" PackagePath="build">
     </None>
   </ItemGroup>
   
