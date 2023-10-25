@@ -28,6 +28,7 @@ jobs:
                 run: |
                     docker run -d --rm --name dummy_container microsoft/lightgbm tail -f /dev/null
                     docker cp dummy_container:/usr/local/lib/lib_lightgbm.so ./native/Release/lib_lightgbm.so
+                    docker cp dummy_container:/usr/local/bin/lightgbm ./native/Release/lightgbm
                     docker stop dummy_container
             - 
                 name: Setup .NET
